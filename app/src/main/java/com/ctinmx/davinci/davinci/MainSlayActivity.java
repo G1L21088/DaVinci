@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class MainSlayActivity extends AppCompatActivity {
 
@@ -11,6 +14,17 @@ public class MainSlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_slay);
+        crearCarpeta();
+    }
+
+    private void crearCarpeta() {
+        File mediaStorageDir = new File("/sdcard", "DaVinci");
+        if(!mediaStorageDir.exists()) {
+            if(!mediaStorageDir.mkdirs()){
+                Toast.makeText(MainSlayActivity.this, "Carpeta No Creada", Toast.LENGTH_SHORT).show();
+
+            }
+        }
     }
 
     @Override
